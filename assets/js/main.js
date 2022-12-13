@@ -1,3 +1,9 @@
+// DOM
+const throwDiceBtn = document.querySelector('.throwDiceBtn'); // 주사위 던지기 버튼
+const fixDiceArea = document.querySelector('.fixDiceArea'); // 픽스한 주사위 영역
+const unfixDiceArea = document.querySelector('.unfixDiceArea'); // 픽스하지 않은 주사위 영역
+
+
 // DATA
 let TURN = true // true = player 1's turn, false = player 2's turn
 let DICE_PROCESS = []; // fix 하지 않은 주사위 배열
@@ -5,6 +11,28 @@ let FIX_DICE = []; // fix 한 주사위 배열
 let PLAYER_ONE_LIFE = 3; // 플레이어 1의 남은 주사위 횟수
 let PLAYER_TWO_LIFE = 3; // 플레이어 2의 남은 주사위 횟수
 
+
+// EventListener
+throwDiceBtn.addEventListener('click', () => throwDice(6, TURN));
+
+
+// Function
+function init() {
+  DiceResultAreaSetup()
+}
+/**
+ * fixDiceArea 와 unFixDiceArea 하위 버튼에 class 명을 설정해줌
+ */
+function DiceResultAreaSetup() {
+  const fixDiceAreaBtn = fixDiceArea.children;
+  const unFixDiceAreaBtn = unfixDiceArea.children;
+  for (let i = 0; i < fixDiceAreaBtn.length; i++) {
+    fixDiceAreaBtn[i].classList.add(`fixDiceArea${i}`)
+  }
+  for (let i = 0; i < unFixDiceAreaBtn.length; i++) {
+    unFixDiceAreaBtn[i].classList.add(`unFixDiceArea${i}`)
+  }
+}
 /**
  * 플레이어의 주사위 횟수를 1 감소시키고 fix 하지 않은 주사위를 던져주는 기능
  * @param {number} diceNum fix 하지 않은 주사위의 수
@@ -19,7 +47,6 @@ function throwDice(diceNum, player) {
   lifeCounter(player)
   return DICE_PROCESS.sort((a, b) => a - b) // 주사위 결과값 내림차순 정렬
 }
-
 /**
  * 플레이어의 주사위 횟수를 감소시키는 함수
  * @param {number} player 플레이어를 구분하는 파라미터
@@ -29,4 +56,4 @@ function lifeCounter(player) {
   return player === 1 ? PLAYER_ONE_LIFE-- : PLAYER_TWO_LIFE--;
 }
 
-console.log(throwDice(5, 2))
+init()
