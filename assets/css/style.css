@@ -5,3 +5,18 @@ li {
 .header_text {
   font-size: 4rem;
 }
+
+.game_tray {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+.scoreBode>div>ul,
+.scoreBode>div>ul>li>p {
+  margin: 0;
+}
+
+.scoreBode>div>ul>li,
+.scoreBode>div>ul>li>button {
+  width: 100%;
+}

@@ -2,8 +2,8 @@
 let TURN = true // true = player 1's turn, false = player 2's turn
 let DICE_PROCESS = []; // fix 하지 않은 주사위 배열
 let FIX_DICE = []; // fix 한 주사위 배열
-let PLAYER_ONE_LIFE = 2; // 플레이어 1의 남은 주사위 횟수
-let PLAYER_TWO_LIFE = 2; // 플레이어 2의 남은 주사위 횟수
+let PLAYER_ONE_LIFE = 3; // 플레이어 1의 남은 주사위 횟수
+let PLAYER_TWO_LIFE = 3; // 플레이어 2의 남은 주사위 횟수
 
 /**
  * 플레이어의 주사위 횟수를 1 감소시키고 fix 하지 않은 주사위를 던져주는 기능
