@@ -6,14 +6,14 @@ const unfixDiceArea = document.querySelector('.unfixDiceArea'); // 픽스하지 
 
 // DATA
 let TURN = true // true = player 1's turn, false = player 2's turn
-let DICE_PROCESS = []; // fix 하지 않은 주사위 배열
+let DICE_PROCESS = [0, 0, 0, 0, 0]; // fix 하지 않은 주사위 배열
 let FIX_DICE = []; // fix 한 주사위 배열
 let PLAYER_ONE_LIFE = 3; // 플레이어 1의 남은 주사위 횟수
 let PLAYER_TWO_LIFE = 3; // 플레이어 2의 남은 주사위 횟수
 
 
 // EventListener
-throwDiceBtn.addEventListener('click', () => throwDice(6, TURN));
+throwDiceBtn.addEventListener('click', () => throwDice(DICE_PROCESS.length, TURN));
 
 
 // Function
@@ -42,11 +42,12 @@ function DiceResultAreaSetup() {
 function throwDice(diceNum, player) {
   DICE_PROCESS = [] // 주사위 과정 배열 초기화
   for (let i = 0; i < diceNum; i++) { // fix 하지 않은 주사위를 갯수만큼 diceNum을 받아 주사위를 던짐
-    DICE_PROCESS.push(Math.ceil(Math.random() * 6))
-  }
-  lifeCounter(player)
-  return DICE_PROCESS.sort((a, b) => a - b) // 주사위 결과값 내림차순 정렬
-}
+    DICE_PROCESS.push(Math.ceil(Math.random() * 6));
+  };
+  DICE_PROCESS.sort((a, b) => a - b); // 주사위 결과값 내림차순 정렬
+  assignUnFixDice(DICE_PROCESS.length)
+  lifeCounter(player);
+};
 /**
  * 플레이어의 주사위 횟수를 감소시키는 함수
  * @param {number} player 플레이어를 구분하는 파라미터
@@ -54,6 +55,15 @@ function throwDice(diceNum, player) {
  */
 function lifeCounter(player) {
   return player === 1 ? PLAYER_ONE_LIFE-- : PLAYER_TWO_LIFE--;
+}
+/**
+ * 주사위 배열을 unFixDiceButton 에 출력해줌
+ * @param {number} diceNum fix 하지 않은 주사위의 수
+ */
+function assignUnFixDice(diceNum) {
+  for (let i = 0; i < diceNum; i++) {
+    document.querySelector(`.unFixDiceArea${i}`).innerText = DICE_PROCESS[i]
+  }
 }
 
 init()
