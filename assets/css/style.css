@@ -20,3 +20,9 @@ li {
 .scoreBode>div>ul>li>button {
   width: 100%;
 }
+
+.fixDiceArea>button,
+.unfixDiceArea>button {
+  width: 100px;
+  height: 50px;
+}
