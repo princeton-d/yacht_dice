@@ -47,10 +47,19 @@ function DiceResultAreaSetup() {
 /**
  * 플레이어의 주사위 횟수를 1 감소시키고 fix 하지 않은 주사위를 던져주는 기능
  * @param {number} DICE_CHANCE fix 하지 않은 주사위의 수
- * @param {number} player 플레이어를 구분하는 파라미터
+ * @param {boolean} player 플레이어를 구분하는 파라미터
  * @returns fix 하지 않은 주사위를 굴려 sort를 사용해 정렬한 배열
  */
 function throwDice(DICE_CHANCE, player) {
+  if (player) {
+    if (PLAYER_ONE_LIFE === 0) {
+      return alert('더이상 주사위를 던질 수 없습니다.')
+    }
+  } else {
+    if (PLAYER_TWO_LIFE === 0) {
+      return alert('더이상 주사위를 던질 수 없습니다.')
+    }
+  }
   UN_FIX_DICE_PROCESS = [Infinity, Infinity, Infinity, Infinity, Infinity] // 주사위 과정 배열 초기화
   for (let i = 0; i < DICE_CHANCE; i++) { // fix 하지 않은 주사위를 갯수만큼 diceNum을 받아 주사위를 던짐
     UN_FIX_DICE_PROCESS.shift();
@@ -67,7 +76,7 @@ function throwDice(DICE_CHANCE, player) {
  * @returns 해당하는 플레이어의 life 를 1 감소함
  */
 function lifeCounter(player) {
-  return player === 1 ? PLAYER_ONE_LIFE-- : PLAYER_TWO_LIFE--;
+  return player === true ? PLAYER_ONE_LIFE-- : PLAYER_TWO_LIFE--;
 };
 
 /**
@@ -110,7 +119,7 @@ function changeDice(e) {
       DICE_CHANCE--
     }
   }
-
+  console.log(PLAYER_ONE_LIFE)
 }
 
 init()
