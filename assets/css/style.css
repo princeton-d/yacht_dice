@@ -11,13 +11,13 @@ li {
   border-radius: 20px;
 }
 
-.scoreBode>div>ul,
-.scoreBode>div>ul>li>p {
+.scoreBoard>div>ul,
+.scoreBoard>div>ul>li>p {
   margin: 0;
 }
 
-.scoreBode>div>ul>li,
-.scoreBode>div>ul>li>button {
+.scoreBoard>div>ul>li,
+.scoreBoard>div>ul>li>button {
   width: 100%;
 }
 
