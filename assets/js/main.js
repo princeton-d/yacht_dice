@@ -1,5 +1,16 @@
 import userScoreData from "./scoreData.js";
 
+// console.log(Object.values(Object.values(userScoreData)[0]))
+
+for (let i = 0; i < Object.values(userScoreData).length; i++) {
+  Object.values(userScoreData)[i].one[0].addEventListener('click', function () {
+    console.log('click')
+  });
+  Object.values(userScoreData)[i].two[0].addEventListener('click', function () {
+    console.log('click')
+  });
+};
+
 // DOM
 const throwDiceBtn = document.querySelector('.throwDiceBtn'); // 주사위 던지기 버튼
 const fixDiceArea = document.querySelector('.fixDiceArea'); // 픽스한 주사위 영역
