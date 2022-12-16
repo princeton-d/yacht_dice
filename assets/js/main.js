@@ -1,3 +1,5 @@
+import userScoreData from "./scoreData.js";
+
 // DOM
 const throwDiceBtn = document.querySelector('.throwDiceBtn'); // 주사위 던지기 버튼
 const fixDiceArea = document.querySelector('.fixDiceArea'); // 픽스한 주사위 영역
