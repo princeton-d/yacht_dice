@@ -119,7 +119,6 @@ function changeDice(e) {
       DICE_CHANCE--
     }
   }
-  console.log(PLAYER_ONE_LIFE)
 }
 
 init()
